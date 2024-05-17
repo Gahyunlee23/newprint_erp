@@ -1,0 +1,1 @@
+export 'package:newprint_erp/splash/view/splash_page.dart';

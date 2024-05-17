@@ -1,0 +1,14 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "authentication_repository",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    }
+  ],
+  "generated": "2024-05-16T20:19:57.773253Z",
+  "generator": "pub",
+  "generatorVersion": "3.3.4"
+}
