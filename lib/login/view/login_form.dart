@@ -20,20 +20,63 @@ class LoginForm extends StatelessWidget {
       },
       child: Align(
         alignment: const Alignment(0, -1 / 3),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _UsernameInput(),
-            const Padding(padding: EdgeInsets.all(12)),
-            _PasswordInput(),
-            const Padding(padding: EdgeInsets.all(12)),
-            _LoginButton(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [ // children 속성 추가
+              Container(
+                width: 336,
+                height: 46,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(top: 5, right: 9, bottom: 3),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 147,
+                            height: 38,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage("https://www.newprint.ca/media/logo/default/logo.png"),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Padding(padding: EdgeInsets.all(12)),
+              _UsernameInput(),
+              const Padding(padding: EdgeInsets.all(12)),
+              _PasswordInput(),
+              const Padding(padding: EdgeInsets.all(12)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _ForgotPasswordButton(),
+                  _RememberMeCheckbox(),
+                ],
+              ),
+              const Padding(padding: EdgeInsets.all(12)),
+              _LoginButton(),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
 
 class _UsernameInput extends StatelessWidget {
   @override
@@ -46,6 +89,7 @@ class _UsernameInput extends StatelessWidget {
           onChanged: (username) =>
               context.read<LoginBloc>().add(LoginUsernameChanged(username)),
           decoration: InputDecoration(
+            border: OutlineInputBorder(),
             labelText: 'username',
             errorText:
             state.username.displayError != null ? 'invalid username' : null,
@@ -68,6 +112,8 @@ class _PasswordInput extends StatelessWidget {
               context.read<LoginBloc>().add(LoginPasswordChanged(password)),
           obscureText: true,
           decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Password',
             errorText:
             state.password.displayError != null ? 'invalid password' : null,
           ),
@@ -77,20 +123,70 @@ class _PasswordInput extends StatelessWidget {
   }
 }
 
-class _ForgotPassword extends StatelessWidget {
+class _ForgotPasswordButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return TextButton(
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Forgot Password'),
+              content: Text('Password reset functionality is not implemented yet.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      },
+      child: Text(
+        'Forgot your password?',
+        style: TextStyle(color: Colors.blue), // Change the text color here
+      ),
+    );
   }
-  
 }
+
+class _RememberMeCheckbox extends StatefulWidget {
+  @override
+  _RememberMeCheckboxState createState() => _RememberMeCheckboxState();
+}
+
+class _RememberMeCheckboxState extends State<_RememberMeCheckbox> {
+  bool isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Checkbox(
+          value: isChecked,
+          onChanged: (value) {
+            setState(() {
+              isChecked = value!;
+            });
+          },
+        ),
+        Text('Remember Me'),
+      ],
+    );
+  }
+}
+
 
 class _LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style =
-    ElevatedButton.styleFrom(backgroundColor: Colors.black, fixedSize: Size(336, 42));
+    ElevatedButton.styleFrom(backgroundColor: Color(0xff1176c0), fixedSize: Size(336, 42));
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         return state.status.isInProgress

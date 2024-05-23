@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:http/http.dart' as http;
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 
@@ -11,14 +12,30 @@ class AuthenticationRepository {
     yield* _controller.stream;
   }
 
+
   Future<void> logIn({
     required String username,
     required String password,
   }) async {
-    await Future.delayed(
-      const Duration(milliseconds: 300),
-          () => _controller.add(AuthenticationStatus.authenticated),
-    );
+    try {
+      var url = Uri.http('0.0.0.0:54116', 'login/jwt');
+      var response = await http.post(
+        url,
+        body: {'username': username, 'password': password},
+      );
+
+      print(response);
+      print(1111);
+      if (response.statusCode == 200) {
+        _controller.add(AuthenticationStatus.authenticated);
+      } else {
+        print('Failed to login. Status code: ${response.statusCode}, Body: ${response.body}');
+        _controller.add(AuthenticationStatus.unauthenticated);
+      }
+    } catch (error) {
+      print('An error occurred: $error');
+      _controller.add(AuthenticationStatus.unauthenticated);
+    }
   }
 
   void logOut() {
