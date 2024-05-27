@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
@@ -18,14 +19,13 @@ class AuthenticationRepository {
     required String password,
   }) async {
     try {
-      var url = Uri.http('0.0.0.0:54116', 'login/jwt');
+      var url = Uri.https('web.newprint.com', 'login/jwt');
       var response = await http.post(
         url,
-        body: {'username': username, 'password': password},
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: jsonEncode({'username': username, 'password': password}),
       );
 
-      print(response);
-      print(1111);
       if (response.statusCode == 200) {
         _controller.add(AuthenticationStatus.authenticated);
       } else {

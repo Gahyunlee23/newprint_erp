@@ -11,3 +11,4 @@ final class _AuthenticationStatusChanged extends AuthenticationEvent {
 }
 
 final class AuthenticationLogoutRequested extends AuthenticationEvent {}
+
