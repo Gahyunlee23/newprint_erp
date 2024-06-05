@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newprint_erp/authentication/authentication.dart';
 import 'package:newprint_erp/home/home.dart';
 import 'package:newprint_erp/login/login.dart';
+import 'package:newprint_erp/providers/theme_provider.dart';
 import 'package:newprint_erp/splash/splash.dart';
+import 'package:provider/provider.dart';
 import 'package:user_repository/user_repository.dart';
 
 class App extends StatefulWidget {
@@ -61,6 +63,7 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: Provider.of<ThemeProvider>(context, listen: false).themeData,
       debugShowCheckedModeBanner: false,
       navigatorKey: _navigatorKey,
       builder: (context, child) {

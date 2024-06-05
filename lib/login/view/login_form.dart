@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newprint_erp/login/bloc/login_bloc.dart';
 import 'package:newprint_erp/login/login.dart';
 import 'package:formz/formz.dart';
-import 'package:newprint_erp/app_theme.dart';
+import 'package:newprint_erp/themes/style.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:newprint_erp/providers/theme_provider.dart';
+
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -25,52 +26,41 @@ class LoginForm extends StatelessWidget {
           }
         },
         child: Align(
-          alignment: const Alignment(0, -1 / 3),
+          alignment: const Alignment(0, -1.5 / 3),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  width: 336,
-                  height: 46,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        padding: const EdgeInsets.only(top: 5, right: 9, bottom: 3),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 147,
-                              height: 38,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: NetworkImage("https://www.newprint.ca/media/logo/default/logo.png"),
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                            ),
-                          ],
+                        width: 173,
+                        height: 46,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                "https://www.newprint.ca/media/logo/default/logo.png"),
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-                const Padding(padding: EdgeInsets.all(12)),
+                const Padding(padding: EdgeInsets.all(20)),
                 _UsernameInput(),
-                const Padding(padding: EdgeInsets.all(12)),
+                const Padding(padding: EdgeInsets.all(8)),
                 _PasswordInput(),
-                const Padding(padding: EdgeInsets.all(12)),
+                const Padding(padding: EdgeInsets.all(6)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _RememberMeCheckbox(),
                     _ForgotPasswordButton(),
+                    _RememberMeCheckbox(), // Remove Expanded widget
                   ],
                 ),
                 const Padding(padding: EdgeInsets.all(12)),
@@ -134,37 +124,39 @@ class __InputFieldState extends State<_InputField> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeProvider>(context).themeData;
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         final hasError = widget.error != null;
-        return TextField(
-          onChanged: widget.onChanged,
-          obscureText: widget.isPassword ? _obscureText : false,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: AppTheme.primaryColor),
-            ),
-            labelText: widget.labelText,
-            labelStyle: TextStyle(
-                color: hasError ? AppTheme.errorColor : (_isFocused ? AppTheme.primaryColor : null)),
-            errorText: _getErrorText(widget.error),
-            suffixIcon: widget.isPassword
-                ? TextButton(
-              onPressed: () {
-                setState(() {
-                  _obscureText = !_obscureText;
-                });
-              },
-              child: Text(
-                _obscureText ? 'Show' : 'Hide',
-                style: TextStyle(
-                  color: AppTheme.primaryColor,
+        return Container(
+            child: TextField(
+              onChanged: widget.onChanged,
+              obscureText: widget.isPassword ? _obscureText : false,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: theme.primaryColor),
                 ),
+                labelText: widget.labelText,
+                labelStyle: TextStyle(
+                  color: hasError ? theme.colorScheme.error : (_isFocused ? theme.primaryColor : theme.colorScheme.secondary)
+                ),
+                errorText: _getErrorText(widget.error),
+                suffixIcon: widget.isPassword
+                    ? TextButton(
+                  onPressed: () {
+                    setState(() {
+                      _obscureText = !_obscureText;
+                    });
+                  },
+                  child: Text(
+                    _obscureText ? 'Show' : 'Hide',
+                    style: theme.textTheme.labelMedium?.copyWith(color: theme.primaryColor),
+                  ),
+                ) : null,
               ),
-            ) : null,
-          ),
-          focusNode: _focusNode,
+              focusNode: _focusNode,
+            ),
         );
       },
     );
@@ -209,6 +201,7 @@ class _PasswordInput extends StatelessWidget {
 class _ForgotPasswordButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeProvider>(context).themeData;
     return TextButton(
       onPressed: () {
         showDialog(
@@ -230,8 +223,8 @@ class _ForgotPasswordButton extends StatelessWidget {
         );
       },
       child: Text(
-        'Forgot your password?',
-        style: TextStyle(color: AppTheme.primaryColor),
+        'Forgot password?',
+        style: theme.textTheme.labelSmall?.copyWith(color: theme.primaryColor, fontSize: 14),
       ),
     );
   }
@@ -247,18 +240,24 @@ class _RememberMeCheckboxState extends State<_RememberMeCheckbox> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeProvider>(context).themeData;
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Checkbox(
-          value: isChecked,
-          onChanged: (value) {
-            setState(() {
-              isChecked = value!;
-            });
-          },
+          Checkbox(
+            value: isChecked,
+            onChanged: (value) {
+              setState(() {
+                isChecked = value!;
+              });
+            },
+            activeColor: theme.primaryColor,
+          ),
+        Text('Remember me',
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: AppStyles.secondaryColor
+          ),
         ),
-        Text('Remember Me'),
       ],
     );
   }
@@ -267,12 +266,12 @@ class _RememberMeCheckboxState extends State<_RememberMeCheckbox> {
 class _LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = ElevatedButton.styleFrom(
-      backgroundColor: AppTheme.primaryColor,
-      fixedSize: Size(336, 42),
-    );
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
+        final theme = Provider.of<ThemeProvider>(context).themeData;
+        final ButtonStyle style = ElevatedButton.styleFrom(
+          fixedSize: Size(328, 48),
+        );
         return state.status.isInProgress
             ? const CircularProgressIndicator()
             : ElevatedButton(
@@ -280,9 +279,12 @@ class _LoginButton extends StatelessWidget {
           key: const Key('loginForm_continue_raisedButton'),
           onPressed: state.isValid
               ? () {
-            final username = context.read<LoginBloc>().state.username.value;
-            final password = context.read<LoginBloc>().state.password.value;
-            final rememberMe = context.read<_RememberMeCheckboxState>().isChecked;
+            final username =
+                context.read<LoginBloc>().state.username.value;
+            final password =
+                context.read<LoginBloc>().state.password.value;
+            final rememberMe =
+                context.read<_RememberMeCheckboxState>().isChecked;
             if (rememberMe) {
               _saveCredentials(username, password);
             }
@@ -295,14 +297,9 @@ class _LoginButton extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Sign In',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w500,
-                  height: 0.09,
-                ),
+                'Sign in',
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white),
               ),
             ],
           ),
