@@ -133,10 +133,6 @@ class __InputFieldState extends State<_InputField> {
               onChanged: widget.onChanged,
               obscureText: widget.isPassword ? _obscureText : false,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: theme.primaryColor),
-                ),
                 labelText: widget.labelText,
                 labelStyle: TextStyle(
                   color: hasError ? theme.colorScheme.error : (_isFocused ? theme.primaryColor : theme.colorScheme.secondary)
@@ -244,15 +240,18 @@ class _RememberMeCheckboxState extends State<_RememberMeCheckbox> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-          Checkbox(
+        SizedBox(
+          width: 24,
+          height: 24,
+          child: Checkbox(
             value: isChecked,
             onChanged: (value) {
               setState(() {
                 isChecked = value!;
               });
             },
-            activeColor: theme.primaryColor,
           ),
+        ),
         Text('Remember me',
           style: theme.textTheme.bodyMedium?.copyWith(
             color: AppStyles.secondaryColor

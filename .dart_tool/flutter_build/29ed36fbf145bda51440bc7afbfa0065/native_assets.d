@@ -1,0 +1,1 @@
+ /Users/stella/StudioProjects/newprint_erp/.dart_tool/flutter_build/29ed36fbf145bda51440bc7afbfa0065/native_assets.yaml: 
