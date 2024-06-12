@@ -9,6 +9,8 @@ import 'package:newprint_erp/splash/splash.dart';
 import 'package:provider/provider.dart';
 import 'package:user_repository/user_repository.dart';
 
+import 'home/bloc/home_bloc.dart';
+
 class App extends StatefulWidget {
   const App({super.key});
 
@@ -35,13 +37,23 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: _authenticationRepository,
-      child: BlocProvider(
-        create: (_) => AuthenticationBloc(
-          authenticationRepository: _authenticationRepository,
-          userRepository: _userRepository,
-        ),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider.value(value: _authenticationRepository),
+        RepositoryProvider.value(value: _userRepository),
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (_) => AuthenticationBloc(
+              authenticationRepository: _authenticationRepository,
+              userRepository: _userRepository,
+            ),
+          ),
+          BlocProvider(
+            create: (_) => HomeBloc(userRepository: _userRepository)..add(LoadHomeData()),
+          ),
+        ],
         child: const AppView(),
       ),
     );
@@ -75,6 +87,7 @@ class _AppViewState extends State<AppView> {
                   HomePage.route(),
                       (route) => false,
                 );
+                break;
               case AuthenticationStatus.unauthenticated:
                 _navigator.pushAndRemoveUntil<void>(
                   LoginPage.route(),

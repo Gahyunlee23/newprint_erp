@@ -5,23 +5,16 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  late final UserRepository _userRepository;
+  final UserRepository _userRepository;
 
-  HomeBloc({
-    required UserRepository userRepository,
-  })  : _userRepository = userRepository,
-        super(HomeInitial());
-
-  Stream<HomeState> mapEventToState(
-      HomeEvent event,
-      ) async* {
-    if (event is LoadHomeData) {
-      yield* _mapLoadHomeDataToState(event);
-    }
+  HomeBloc({required UserRepository userRepository})
+      : _userRepository = userRepository,
+        super(HomeInitial()) {
+    on<LoadHomeData>(_onLoadHomeData);
   }
 
-  Stream<HomeState> _mapLoadHomeDataToState(LoadHomeData event) async* {
-    yield HomeLoading();
+  void _onLoadHomeData(LoadHomeData event, Emitter<HomeState> emit) async {
+    emit(HomeLoading());
     try {
       final user = await _userRepository.getUser();
       final homeData = UserProfile(
@@ -32,9 +25,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         roles: user.roles,
         menus: user.menus,
       );
-      yield HomeLoaded(homeData: homeData);
-    } catch(error) {
-      yield HomeError(error: error.toString());
+      emit(HomeLoaded(homeData: homeData));
+    } catch (error) {
+      emit(HomeError(error: error.toString()));
     }
   }
 }

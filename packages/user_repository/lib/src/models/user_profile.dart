@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 import 'menu.dart';
 
 class UserProfile extends Equatable {
@@ -22,8 +21,14 @@ class UserProfile extends Equatable {
   });
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
-    final menusData = json['menus'] as List<dynamic>;
-    final menus = menusData.map((data) => Menu.fromJson(data)).toList();
+    final List<dynamic>? menusData = json['menus'];
+
+    if (menusData == null) {
+      throw FormatException("Invalid 'menus' data");
+    }
+
+    final List<Menu> menus = (json['menus'] as List<dynamic>?)?.map((data) => Menu.fromJson(data as Map<String, dynamic>)).toList() ?? [];
+    ;
 
     return UserProfile(
       email: json['email'] as String,
@@ -39,4 +44,3 @@ class UserProfile extends Equatable {
   @override
   List<Object?> get props => [email, name, timezone, profileImageUrl, groupRoleName, roles, menus];
 }
-

@@ -38,18 +38,25 @@ class AuthenticationBloc
       _AuthenticationStatusChanged event,
       Emitter<AuthenticationState> emit,
       ) async {
+    print('Authentication status changed: ${event.status}');
     switch (event.status) {
       case AuthenticationStatus.unauthenticated:
-        return emit(const AuthenticationState.unauthenticated());
+        print('User is unauthenticated');
+        emit(const AuthenticationState.unauthenticated());
+        break;
       case AuthenticationStatus.authenticated:
+        print('User is authenticated');
         final user = await _tryGetUser();
-        return emit(
+        emit(
           user != null
               ? AuthenticationState.authenticated(user)
               : const AuthenticationState.unauthenticated(),
         );
+        break;
       case AuthenticationStatus.unknown:
-        return emit(const AuthenticationState.unknown());
+        print('Authentication status is unknown');
+        emit(const AuthenticationState.unknown());
+        break;
     }
   }
 
@@ -57,6 +64,7 @@ class AuthenticationBloc
       AuthenticationLogoutRequested event,
       Emitter<AuthenticationState> emit,
       ) {
+    print('Logout requested');
     _authenticationRepository.logOut();
   }
 
@@ -65,6 +73,7 @@ class AuthenticationBloc
       final user = await _userRepository.getUser();
       return user;
     } catch (_) {
+      print('Failed to fetch user information');
       return null;
     }
   }

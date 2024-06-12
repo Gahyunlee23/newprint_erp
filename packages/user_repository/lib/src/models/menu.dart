@@ -10,8 +10,9 @@ class Menu extends Equatable {
   });
 
   factory Menu.fromJson(Map<String, dynamic> json) {
-    final subMenusData = json['subMenus'] as List<dynamic>;
-    final subMenus = subMenusData.map((data) => SubMenu.fromJson(data)).toList();
+    final List<dynamic> subMenusData = json['subMenus'] ?? [];
+    final List<SubMenu> subMenus =
+    subMenusData.map((data) => SubMenu.fromJson(data)).toList();
 
     return Menu(
       name: json['name'] as String,
@@ -35,7 +36,7 @@ class SubMenu extends Equatable {
   factory SubMenu.fromJson(Map<String, dynamic> json) {
     return SubMenu(
       name: json['name'] as String,
-      permissions: List<String>.from(json['permissions'] as List<dynamic>),
+      permissions: List<String>.from(json['permissions'] ?? []),
     );
   }
 
