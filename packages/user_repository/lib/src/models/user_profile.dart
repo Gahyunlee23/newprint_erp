@@ -27,8 +27,8 @@ class UserProfile extends Equatable {
       throw FormatException("Invalid 'menus' data");
     }
 
-    final List<Menu> menus = (json['menus'] as List<dynamic>?)?.map((data) => Menu.fromJson(data as Map<String, dynamic>)).toList() ?? [];
-    ;
+    final List<Menu> menus = (json['menus'] as List<dynamic>?)
+        ?.map((data) => Menu.fromJson(data as Map<String, dynamic>)).toList() ?? [];
 
     return UserProfile(
       email: json['email'] as String,

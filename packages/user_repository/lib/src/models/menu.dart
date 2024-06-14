@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'sub_menu.dart';
 
 class Menu extends Equatable {
   final String name;
@@ -24,22 +25,4 @@ class Menu extends Equatable {
   List<Object?> get props => [name, subMenus];
 }
 
-class SubMenu extends Equatable {
-  final String name;
-  final List<String> permissions;
 
-  SubMenu({
-    required this.name,
-    required this.permissions,
-  });
-
-  factory SubMenu.fromJson(Map<String, dynamic> json) {
-    return SubMenu(
-      name: json['name'] as String,
-      permissions: List<String>.from(json['permissions'] ?? []),
-    );
-  }
-
-  @override
-  List<Object?> get props => [name, permissions];
-}
