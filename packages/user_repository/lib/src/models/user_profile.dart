@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:user_repository/src/models/models.dart';
 import 'menu.dart';
 
 class UserProfile extends Equatable {
@@ -9,6 +10,7 @@ class UserProfile extends Equatable {
   final String groupRoleName;
   final List<String> roles;
   final List<Menu> menus;
+
 
   UserProfile({
     required this.email,
@@ -30,11 +32,15 @@ class UserProfile extends Equatable {
     final List<Menu> menus = (json['menus'] as List<dynamic>?)
         ?.map((data) => Menu.fromJson(data as Map<String, dynamic>)).toList() ?? [];
 
+    if (json['profileImageUrl'] == null) {
+      json['profileImageUrl'] = "";
+    }
+
     return UserProfile(
       email: json['email'] as String,
       name: json['name'] as String,
       timezone: json['timezone'] as String,
-      profileImageUrl: json['profileImageUrl'] as String?,
+      profileImageUrl: json['profileImageUrl'] as String,
       groupRoleName: json['groupRoleName'] as String,
       roles: List<String>.from(json['roles'] as List<dynamic>),
       menus: menus,

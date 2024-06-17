@@ -26,21 +26,21 @@ class AuthenticationRepository {
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
         body: jsonEncode({'username': username, 'password': password}),
       );
-
       if (response.statusCode == 200) {
         final responseBody = jsonDecode(response.body);
         final token = responseBody['token'];
         await prefs.setString('jwt_token', token);
-
         _controller.add(AuthenticationStatus.authenticated);
-
       } else {
         print('Failed to login. Status code: ${response.statusCode}, Body: ${response.body}');
         _controller.add(AuthenticationStatus.unauthenticated);
+        throw Exception('Login failed with status code: ${response.statusCode}, Body ${response.body}');
       }
     } catch (error) {
       print('An error occurred: $error');
       _controller.add(AuthenticationStatus.unauthenticated);
+      throw Exception('Login failed with status code: $error');
+
     }
   }
 

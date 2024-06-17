@@ -22,8 +22,8 @@ class AppStyles {
   static const Color onSecondaryFixedVariant = Color(0xFF3B4858);
 
   static const Color errorColor = Color(0xFFBA1A1A);
-  static const Color errorContainerColor = Color(0xFFFFDAD6);
-  static const Color onErrorContainerColor = Color(0xFF410002);
+  static const Color errorContainer = Color(0xFFFFDAD6);
+  static const Color onErrorContainer = Color(0xFF410002);
 
   static const Color surfaceDim = Color(0xFFD8DAE0);
   static const Color surface = Color(0xFFF8F9FF);
@@ -114,8 +114,8 @@ class AppStyles {
       onSecondary: onSecondary,
       onSecondaryContainer: onSecondaryContainer,
       error: errorColor,
-      errorContainer: errorContainerColor,
-      onErrorContainer: onErrorContainerColor,
+      errorContainer: errorContainer,
+      onErrorContainer: onErrorContainer,
       surface: surface,
       onSurface: onSurface,
       onSurfaceVariant: onSurfVar,
@@ -160,6 +160,15 @@ class AppStyles {
     tabBarTheme: TabBarTheme(
       indicator: BoxDecoration(
         color: Colors.black,
+      ),
+    ),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: errorColor,
+      contentTextStyle: TextStyle(color: Colors.black),
+      actionTextColor: onPrimary,
+      elevation: 6.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0), // Border radius
       ),
     ),
     textTheme: TextTheme(

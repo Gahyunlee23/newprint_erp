@@ -27,7 +27,6 @@ class HomePage extends StatelessWidget {
               final now = DateTime.now();
               final currentHour = now.hour;
               final greeting = _getGreetingMessage(currentHour);
-
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -37,6 +36,13 @@ class HomePage extends StatelessWidget {
                       'Hello, ${user.name}\n$greeting',
                       style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                     ),
+                  ),
+                  Container(
+                    width: 173,
+                    height: 46,
+                    child: user.profileImageUrl != null
+                        ? Image(image: NetworkImage(user.profileImageUrl))
+                        : Icon(Icons.person)
                   ),
                   Expanded(
                     child: ListView.builder(

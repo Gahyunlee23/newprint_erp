@@ -58,7 +58,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         );
         emit(state.copyWith(status: FormzSubmissionStatus.success));
       } catch (error) {
-        print('Login failed with error: $error');
         emit(state.copyWith(status: FormzSubmissionStatus.failure, error: error.toString()));
       }
     }
