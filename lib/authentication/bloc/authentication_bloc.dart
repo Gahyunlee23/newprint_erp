@@ -1,8 +1,8 @@
 import 'dart:async';
-
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:logger/logger.dart';
 import 'package:user_repository/user_repository.dart';
 
 part 'authentication_event.dart';
@@ -38,14 +38,16 @@ class AuthenticationBloc
       _AuthenticationStatusChanged event,
       Emitter<AuthenticationState> emit,
       ) async {
-    print('Authentication status changed: ${event.status}');
+
+    var logger = Logger();
+    logger.i('Authentication status changed: ${event.status}');
     switch (event.status) {
       case AuthenticationStatus.unauthenticated:
-        print('User is unauthenticated');
+        logger.d('User is unauthenticated');
         emit(const AuthenticationState.unauthenticated());
         break;
       case AuthenticationStatus.authenticated:
-        print('User is authenticated');
+        logger.d('User is authenticated');
         final user = await _tryGetUser();
         emit(
           user != null
@@ -54,7 +56,7 @@ class AuthenticationBloc
         );
         break;
       case AuthenticationStatus.unknown:
-        print('Authentication status is unknown');
+        logger.d('Authentication status is unknown');
         emit(const AuthenticationState.unknown());
         break;
     }
@@ -64,11 +66,13 @@ class AuthenticationBloc
       AuthenticationLogoutRequested event,
       Emitter<AuthenticationState> emit,
       ) {
-    print('Logout requested');
+    var logger = Logger();
+    logger.d('Logout requested');
     _authenticationRepository.logOut();
   }
 
   Future<UserProfile?> _tryGetUser() async {
+
     try {
       final user = await _userRepository.getUser();
       return user;

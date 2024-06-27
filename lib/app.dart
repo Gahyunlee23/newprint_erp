@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 import 'package:newprint_erp/authentication/authentication.dart';
-import 'package:newprint_erp/home/home.dart';
-import 'package:newprint_erp/login/login.dart';
-import 'package:newprint_erp/providers/theme_provider.dart';
-import 'package:newprint_erp/splash/splash.dart';
-import 'package:newprint_erp/home/bloc/home_bloc.dart';
+import 'package:newprint_erp/features/home/home.dart';
+import 'package:newprint_erp/features/login/login.dart';
+import 'package:newprint_erp/features/splash/splash.dart';
 
+import 'package:newprint_erp/shared/providers/theme_provider.dart';
+import 'package:newprint_erp/features/home/bloc/home_bloc.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:user_repository/user_repository.dart';
 

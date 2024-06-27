@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newprint_erp/home/bloc/home_bloc.dart';
+import 'package:newprint_erp/features/home/bloc/home_bloc.dart';
 import 'package:user_repository/user_repository.dart';
 
 class HomePage extends StatelessWidget {
@@ -37,13 +37,13 @@ class HomePage extends StatelessWidget {
                       style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Container(
-                    width: 173,
-                    height: 46,
-                    child: user.profileImageUrl != null
-                        ? Image(image: NetworkImage(user.profileImageUrl))
-                        : Icon(Icons.person)
-                  ),
+                  // Container(
+                  //   width: 173,
+                  //   height: 46,
+                  //   child: user.profileImageUrl != null
+                  //       ? Image(image: NetworkImage(user.profileImageUrl))
+                  //       : Icon(Icons.person)
+                  // ),
                   Expanded(
                     child: ListView.builder(
                       itemCount: user.menus.length,

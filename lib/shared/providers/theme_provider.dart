@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newprint_erp/themes/style.dart';
+import 'package:newprint_erp/shared/themes/style.dart';
 
 class ThemeProvider extends ChangeNotifier {
   bool _isDarkMode = false;

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newprint_erp/login/login.dart';
+import 'package:newprint_erp/features/login/login.dart';
 import 'package:formz/formz.dart';
-import 'package:newprint_erp/themes/style.dart';
+import 'package:newprint_erp/shared/themes/style.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:newprint_erp/providers/theme_provider.dart';
+import 'package:newprint_erp/shared/providers/theme_provider.dart';
 
 
 class LoginForm extends StatelessWidget {
@@ -22,7 +22,7 @@ class LoginForm extends StatelessWidget {
               ..hideCurrentSnackBar()
               ..showSnackBar(
                 SnackBar(
-                  content: Text('Login Failed.'), // Set text style
+                  content: Text('Login Failed.'),
                   action: SnackBarAction(
                     label: 'try again',
                     onPressed: () {

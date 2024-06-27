@@ -11,7 +11,6 @@ class UserProfile extends Equatable {
   final List<String> roles;
   final List<Menu> menus;
 
-
   UserProfile({
     required this.email,
     required this.name,
@@ -19,7 +18,7 @@ class UserProfile extends Equatable {
     this.profileImageUrl,
     required this.groupRoleName,
     required this.roles,
-    required this.menus,
+    required this.menus
   });
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
@@ -32,10 +31,6 @@ class UserProfile extends Equatable {
     final List<Menu> menus = (json['menus'] as List<dynamic>?)
         ?.map((data) => Menu.fromJson(data as Map<String, dynamic>)).toList() ?? [];
 
-    if (json['profileImageUrl'] == null) {
-      json['profileImageUrl'] = "";
-    }
-
     return UserProfile(
       email: json['email'] as String,
       name: json['name'] as String,
@@ -43,7 +38,7 @@ class UserProfile extends Equatable {
       profileImageUrl: json['profileImageUrl'] as String,
       groupRoleName: json['groupRoleName'] as String,
       roles: List<String>.from(json['roles'] as List<dynamic>),
-      menus: menus,
+      menus: menus
     );
   }
 
