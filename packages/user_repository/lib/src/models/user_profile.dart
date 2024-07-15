@@ -42,6 +42,41 @@ class UserProfile extends Equatable {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'email': email,
+      'name': name,
+      'timezone': timezone,
+      'profileImageUrl': profileImageUrl,
+      'groupRoleName': groupRoleName,
+      'roles': roles,
+      'menus': menus
+    };
+  }
+
+  UserProfile copyWith({
+    String? email,
+    String? name,
+    String? timezone,
+    String? password,
+    String? customStatus,
+    String? emoji,
+    String? profileImageUrl,
+    String? groupRoleName,
+    List<String>? roles,
+    List<Menu>? menus
+  }) {
+    return UserProfile(
+        email: email ?? this.email,
+        name: name ?? this.name,
+        timezone: timezone ?? this.timezone,
+        profileImageUrl: profileImageUrl ?? this.profileImageUrl,
+        groupRoleName: groupRoleName ?? this.groupRoleName,
+        roles: roles ?? this.roles,
+        menus: menus ?? this.menus
+    );
+  }
+
   @override
   List<Object?> get props => [email, name, timezone, profileImageUrl, groupRoleName, roles, menus];
 }
