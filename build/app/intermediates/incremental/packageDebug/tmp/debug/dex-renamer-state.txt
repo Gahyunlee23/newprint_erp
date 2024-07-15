@@ -1,4 +1,4 @@
-#Thu Jun 20 15:31:56 EDT 2024
+#Mon Jul 08 18:26:11 EDT 2024
 base.0=/Users/stella/StudioProjects/newprint_erp/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

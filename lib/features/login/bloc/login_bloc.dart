@@ -19,36 +19,37 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   final AuthenticationRepository _authenticationRepository;
 
-  void _onUsernameChanged(
-      LoginUsernameChanged event,
+  void _onUsernameChanged(LoginUsernameChanged event, Emitter<LoginState> emit) {
+    _onCredentialChanged(
+      Username.dirty(event.username),
+      state.password,
+      emit,
+    );
+  }
+
+  void _onPasswordChanged(LoginPasswordChanged event, Emitter<LoginState> emit) {
+    _onCredentialChanged(
+      state.username,
+      Password.dirty(event.password),
+      emit,
+    );
+  }
+
+  void _onCredentialChanged(
+      Username username,
+      Password password,
       Emitter<LoginState> emit,
       ) {
-    final username = Username.dirty(event.username);
     emit(
       state.copyWith(
         username: username,
-        isValid: Formz.validate([state.password, username]),
-      ),
-    );
-  }
-
-  void _onPasswordChanged(
-      LoginPasswordChanged event,
-      Emitter<LoginState> emit,
-      ) {
-    final password = Password.dirty(event.password);
-    emit(
-      state.copyWith(
         password: password,
-        isValid: Formz.validate([password, state.username]),
+        isValid: Formz.validate([username, password]),
       ),
     );
   }
 
-  Future<void> _onSubmitted(
-      LoginSubmitted event,
-      Emitter<LoginState> emit,
-      ) async {
+  Future<void> _onSubmitted(LoginSubmitted event, Emitter<LoginState> emit) async {
     if (state.isValid) {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
       try {
@@ -62,5 +63,4 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }
     }
   }
-
 }
