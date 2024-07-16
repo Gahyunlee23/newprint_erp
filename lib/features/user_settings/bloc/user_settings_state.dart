@@ -17,3 +17,8 @@ class UserSettingsError extends UserSettingsState {
   UserSettingsError(this.message);
 }
 
+class ProfileImageUploaded extends UserSettingsState {
+  final String imageUrl;
+
+  ProfileImageUploaded(this.imageUrl);
+}

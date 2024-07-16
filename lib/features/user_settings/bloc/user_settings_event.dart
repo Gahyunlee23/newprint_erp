@@ -44,3 +44,12 @@ class UpdateEmoji extends UserSettingsEvent {
   @override
   List<Object> get props => [emoji];
 }
+
+class UploadingProfileImageUrl extends UserSettingsEvent {
+  final String profileImageUrl;
+
+  UploadingProfileImageUrl(this.profileImageUrl);
+
+  @override
+  List<Object> get props => [profileImageUrl];
+}

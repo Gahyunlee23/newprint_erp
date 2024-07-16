@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:user_repository/user_repository.dart';
 
 part 'user_settings_event.dart';
@@ -23,6 +27,31 @@ class UserSettingsBloc extends Bloc<UserSettingsEvent, UserSettingsState> {
       yield* _mapUpdateUserSettingToState((user) => user.copyWith(customStatus: event.customStatus));
     } else if (event is UpdateEmoji) {
       yield* _mapUpdateUserSettingToState((user) => user.copyWith(emoji: event.emoji));
+    } else if (event is UploadingProfileImageUrl) {
+      yield UserSettingsLoading();
+      try {
+        var request = http.MultipartRequest(
+          'POST',
+          Uri.parse('https://your-api-endpoint/api/user/uploadProfileImage'),
+        );
+        request.files.add(await http.MultipartFile.fromPath(
+          'image',
+          event.imageFile.path,
+        ));
+        request.headers.addAll({
+          'Authorization': 'Bearer your_auth_token',
+        });
+        var res = await request.send();
+        if (res.statusCode == 200) {
+          var responseData = await res.stream.bytesToString();
+          var jsonResponse = jsonDecode(responseData);
+          yield ProfileImageUploaded(jsonResponse['imageUrl']);
+        } else {
+          yield UserSettingsError('Failed to upload profile image');
+        }
+      } catch (e) {
+        yield UserSettingsError(e.toString());
+      }
     }
   }
 
