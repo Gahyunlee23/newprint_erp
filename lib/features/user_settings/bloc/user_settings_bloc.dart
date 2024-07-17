@@ -36,7 +36,7 @@ class UserSettingsBloc extends Bloc<UserSettingsEvent, UserSettingsState> {
         );
         request.files.add(await http.MultipartFile.fromPath(
           'image',
-          event.imageFile.path,
+          event.profileImageUrl,
         ));
         request.headers.addAll({
           'Authorization': 'Bearer your_auth_token',

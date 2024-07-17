@@ -9,6 +9,10 @@ environment:
 dependencies:
   authentication_repository:
     path: packages/authentication_repository
+  user_repository:
+    path: packages/user_repository
+  shared_utils:
+    path: packages/shared_utils
   bloc: ^8.1.0
   equatable: ^2.0.3
   flutter:
@@ -18,9 +22,7 @@ dependencies:
   google_fonts: ^6.2.1
   logger: ^2.3.0
   provider: ^6.1.2
-  shared_preferences: ^2.2.3
-  user_repository:
-    path: packages/user_repository
+  dio: ^5.5.0+1
 
 dev_dependencies:
   bloc_test: ^9.0.0

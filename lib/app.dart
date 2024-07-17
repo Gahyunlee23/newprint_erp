@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:dio/dio.dart';
 
 import 'package:newprint_erp/authentication/authentication.dart';
 import 'package:newprint_erp/features/home/home.dart';
@@ -21,14 +22,16 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  late final Dio _dio;
   late final AuthenticationRepository _authenticationRepository;
   late final UserRepository _userRepository;
 
   @override
   void initState() {
     super.initState();
-    _authenticationRepository = AuthenticationRepository();
-    _userRepository = UserRepository();
+    _dio = Dio(BaseOptions(baseUrl: 'https://web.newprint.com/api'));
+    _authenticationRepository = AuthenticationRepository(_dio);
+    _userRepository = UserRepository(_dio);
   }
 
   @override

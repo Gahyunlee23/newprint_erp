@@ -28,6 +28,9 @@
       <excludeFolder url="file://$MODULE_DIR$/linux/flutter/ephemeral" />
       <excludeFolder url="file://$MODULE_DIR$/macos/Flutter/ephemeral" />
       <excludeFolder url="file://$MODULE_DIR$/windows/flutter/ephemeral" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/shared_utils/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/shared_utils/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/shared_utils/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

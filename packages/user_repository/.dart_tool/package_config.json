@@ -20,6 +20,18 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/dio-5.5.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "dio_web_adapter",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/dio_web_adapter-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "equatable",
       "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/equatable-2.0.5",
       "packageUri": "lib/",
@@ -44,16 +56,16 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "flutter_riverpod",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/flutter_riverpod-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "flutter_web_plugins",
       "rootUri": "file:///Users/stella/FlutterProjects/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.2"
-    },
-    {
-      "name": "http",
-      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/http-1.2.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.3"
     },
     {
       "name": "http_parser",
@@ -110,6 +122,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "riverpod",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/riverpod-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "shared_preferences",
       "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/shared_preferences-2.2.3",
       "packageUri": "lib/",
@@ -152,6 +170,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "shared_utils",
+      "rootUri": "../../shared_utils",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/stella/FlutterProjects/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -162,6 +186,12 @@
       "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/source_span-1.10.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "state_notifier",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/state_notifier-0.7.2+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "string_scanner",
@@ -212,7 +242,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-06-11T18:58:04.036714Z",
+  "generated": "2024-07-17T19:34:08.538179Z",
   "generator": "pub",
   "generatorVersion": "3.3.4"
 }
