@@ -20,6 +20,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final homeData = UserProfile(
         email: user.email,
         name: user.name,
+        password: user.password,
         timezone: user.timezone,
         groupRoleName: user.groupRoleName,
         roles: user.roles,

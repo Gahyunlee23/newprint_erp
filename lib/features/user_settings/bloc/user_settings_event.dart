@@ -19,7 +19,7 @@ class UpdatePassword extends UserSettingsEvent {
 }
 
 class UpdateTimezone extends UserSettingsEvent {
-  final String timezone;
+  final DateTime timezone;
 
   UpdateTimezone(this.timezone);
 
@@ -40,7 +40,6 @@ class UpdateEmoji extends UserSettingsEvent {
   final String emoji;
 
   UpdateEmoji(this.emoji);
-
   @override
   List<Object> get props => [emoji];
 }

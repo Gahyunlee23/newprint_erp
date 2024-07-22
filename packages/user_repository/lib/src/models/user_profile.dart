@@ -5,18 +5,24 @@ import 'menu.dart';
 class UserProfile extends Equatable {
   final String email;
   final String name;
-  final String timezone;
+  final String password;
+  final DateTime timezone;
   final String? profileImageUrl;
   final String groupRoleName;
+  final String? statusMsg;
+  final String? statusEmoji;
   final List<String> roles;
   final List<Menu> menus;
 
   UserProfile({
     required this.email,
     required this.name,
+    required this.password,
     required this.timezone,
     this.profileImageUrl,
     required this.groupRoleName,
+    this.statusMsg,
+    this.statusEmoji,
     required this.roles,
     required this.menus
   });
@@ -34,49 +40,42 @@ class UserProfile extends Equatable {
     return UserProfile(
       email: json['email'] as String,
       name: json['name'] as String,
-      timezone: json['timezone'] as String,
+      password: json['password'] as String,
+      timezone: json['timezone'] as DateTime,
       profileImageUrl: json['profileImageUrl'] as String,
       groupRoleName: json['groupRoleName'] as String,
+      statusMsg: json['statusMsg'] as String,
+      statusEmoji: json['statusEmoji'] as String,
       roles: List<String>.from(json['roles'] as List<dynamic>),
       menus: menus
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'email': email,
-      'name': name,
-      'timezone': timezone,
-      'profileImageUrl': profileImageUrl,
-      'groupRoleName': groupRoleName,
-      'roles': roles,
-      'menus': menus
-    };
-  }
-
   UserProfile copyWith({
     String? email,
     String? name,
-    String? timezone,
     String? password,
-    String? customStatus,
-    String? emoji,
+    DateTime? timezone,
     String? profileImageUrl,
     String? groupRoleName,
+    String? statusMsg,
+    String? statusEmoji,
     List<String>? roles,
-    List<Menu>? menus
+    List<Menu>? menus,
   }) {
     return UserProfile(
         email: email ?? this.email,
         name: name ?? this.name,
+        password: password ?? this.password,
         timezone: timezone ?? this.timezone,
-        profileImageUrl: profileImageUrl ?? this.profileImageUrl,
         groupRoleName: groupRoleName ?? this.groupRoleName,
+        statusMsg: statusMsg ?? this.statusMsg,
+        statusEmoji: statusEmoji ?? this.statusEmoji,
         roles: roles ?? this.roles,
         menus: menus ?? this.menus
     );
   }
 
   @override
-  List<Object?> get props => [email, name, timezone, profileImageUrl, groupRoleName, roles, menus];
+  List<Object?> get props => [email, name, timezone, profileImageUrl, groupRoleName, statusMsg, statusEmoji, roles, menus];
 }

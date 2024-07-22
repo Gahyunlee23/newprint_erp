@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:user_repository/user_repository.dart';
 import '../bloc/user_settings_bloc.dart';
 import 'user_settings_form.dart';
@@ -7,8 +9,11 @@ import 'user_settings_form.dart';
 class UserSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final dio = Dio();
+    final userRepository = UserRepository(dio);
+
     return BlocProvider(
-      create: (context) => UserSettingsBloc(UserRepository()),
+      create: (context) => UserSettingsBloc(userRepository),
       child: Scaffold(
         appBar: AppBar(title: Text('User Settings')),
         body: BlocBuilder<UserSettingsBloc, UserSettingsState>(
@@ -17,7 +22,6 @@ class UserSettingsPage extends StatelessWidget {
               return Center(child: CircularProgressIndicator());
             } else if (state is UserSettingsLoaded) {
               final userProfile = state.user;
-
               return SingleChildScrollView(
                 padding: EdgeInsets.all(16.0),
                 child: Column(
@@ -33,10 +37,7 @@ class UserSettingsPage extends StatelessWidget {
                       subtitle: Text(userProfile.email),
                       dense: true,
                     ),
-
                     Divider(),
-
-                    // Display the UserSettingsForm widget
                     UserSettingsForm(userProfile: userProfile),
                   ],
                 ),

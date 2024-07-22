@@ -129,13 +129,13 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///Users/stella/FlutterProjects/flutter/packages/flutter",
+      "rootUri": "file:///Users/stella/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "flutter_bloc",
-      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/flutter_bloc-8.1.5",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/flutter_bloc-8.1.6",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -147,13 +147,13 @@
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///Users/stella/FlutterProjects/flutter/packages/flutter_test",
+      "rootUri": "file:///Users/stella/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "flutter_web_plugins",
-      "rootUri": "file:///Users/stella/FlutterProjects/flutter/packages/flutter_web_plugins",
+      "rootUri": "file:///Users/stella/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -183,7 +183,7 @@
     },
     {
       "name": "http",
-      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/http-1.2.1",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/http-1.2.2",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -231,7 +231,7 @@
     },
     {
       "name": "logger",
-      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/logger-2.3.0",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/logger-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -267,7 +267,7 @@
     },
     {
       "name": "mocktail",
-      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/mocktail-1.0.3",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/mocktail-1.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -327,15 +327,15 @@
     },
     {
       "name": "path_provider_windows",
-      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.1",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.2"
     },
     {
       "name": "platform",
-      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/platform-3.1.4",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/platform-3.1.5",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "plugin_platform_interface",
@@ -441,7 +441,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///Users/stella/FlutterProjects/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///Users/stella/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -560,12 +560,6 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "win32",
-      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/win32-5.5.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.3"
-    },
-    {
       "name": "xdg_directories",
       "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/xdg_directories-1.0.4",
       "packageUri": "lib/",
@@ -584,7 +578,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-07-17T19:34:27.517545Z",
+  "generated": "2024-07-18T14:33:55.007779Z",
   "generator": "pub",
   "generatorVersion": "3.3.4"
 }

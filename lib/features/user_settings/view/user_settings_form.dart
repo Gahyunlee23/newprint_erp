@@ -20,7 +20,7 @@ class _UserSettingsFormState extends State<UserSettingsForm> {
   @override
   void initState() {
     super.initState();
-    _timezoneController = TextEditingController(text: widget.userProfile.timezone);
+    _timezoneController = TextEditingController(text: widget.userProfile.timezone.toIso8601String());
     _passwordController = TextEditingController();
   }
 
@@ -109,18 +109,23 @@ class _UserSettingsFormState extends State<UserSettingsForm> {
 
               ElevatedButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Dispatch event to update user settings
-                    BlocProvider.of<UserSettingsBloc>(context).add(
-                      UpdateTimezone(_timezoneController.text.trim()),
-                    );
-                    BlocProvider.of<UserSettingsBloc>(context).add(
-                      UpdatePassword(_passwordController.text.trim()),
-                    );
-                    // Add similar dispatches for UpdateCustomStatus and UpdateEmoji as needed
+                  // 사용자가 입력한 값을 처리하는 로직을 추가합니다.
+                  String timezoneString = _timezoneController.text;
+                  DateTime? timezone;
+                  try {
+                    timezone = DateTime.parse(timezoneString);
+                  } catch (e) {
+                    // 변환 실패 시 처리
+                    print('Invalid DateTime format');
+                  }
+
+                  if (timezone != null) {
+                    // 사용자가 입력한 password와 함께 업데이트 로직을 추가합니다.
+                    print('Timezone: $timezone');
+                    print('Password: ${_passwordController.text}');
                   }
                 },
-                child: Text('Update Settings'),
+                child: Text('Save'),
               ),
             ],
           ),
