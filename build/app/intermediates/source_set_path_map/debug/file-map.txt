@@ -1,7 +1,7 @@
-com.example.newprint_erp.app-jetified-window-1.0.0-beta04-0 /Users/stella/.gradle/caches/transforms-3/032f4dff274e516110d9363a9793a3e3/transformed/jetified-window-1.0.0-beta04/res
-com.example.newprint_erp.app-jetified-window-java-1.0.0-beta04-1 /Users/stella/.gradle/caches/transforms-3/142c24f2530665bb6deb4123ab140714/transformed/jetified-window-java-1.0.0-beta04/res
-com.example.newprint_erp.app-core-1.6.0-2 /Users/stella/.gradle/caches/transforms-3/2579a7de00054bf46a8dbc332552f622/transformed/core-1.6.0/res
-com.example.newprint_erp.app-jetified-annotation-experimental-1.1.0-3 /Users/stella/.gradle/caches/transforms-3/3f96ca76068ab400b494bc7d541ee256/transformed/jetified-annotation-experimental-1.1.0/res
+com.example.newprint_erp.app-jetified-annotation-experimental-1.1.0-0 /Users/stella/.gradle/caches/transforms-3/23292729e38e43504796ade9d18050dc/transformed/jetified-annotation-experimental-1.1.0/res
+com.example.newprint_erp.app-jetified-window-1.0.0-beta04-1 /Users/stella/.gradle/caches/transforms-3/905370d3dab651637b8835e89c66cd73/transformed/jetified-window-1.0.0-beta04/res
+com.example.newprint_erp.app-core-1.6.0-2 /Users/stella/.gradle/caches/transforms-3/b265adeb376a3ac6007e3dd20039106a/transformed/core-1.6.0/res
+com.example.newprint_erp.app-jetified-window-java-1.0.0-beta04-3 /Users/stella/.gradle/caches/transforms-3/b999d05729379b348abd2dada5d1bd76/transformed/jetified-window-java-1.0.0-beta04/res
 com.example.newprint_erp.app-debug-4 /Users/stella/StudioProjects/newprint_erp/android/app/src/debug/res
 com.example.newprint_erp.app-main-5 /Users/stella/StudioProjects/newprint_erp/android/app/src/main/res
 com.example.newprint_erp.app-pngs-6 /Users/stella/StudioProjects/newprint_erp/build/app/generated/res/pngs/debug
@@ -10,3 +10,5 @@ com.example.newprint_erp.app-rs-8 /Users/stella/StudioProjects/newprint_erp/buil
 com.example.newprint_erp.app-mergeDebugResources-9 /Users/stella/StudioProjects/newprint_erp/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
 com.example.newprint_erp.app-mergeDebugResources-10 /Users/stella/StudioProjects/newprint_erp/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
 com.example.newprint_erp.app-merged_res-11 /Users/stella/StudioProjects/newprint_erp/build/app/intermediates/merged_res/debug
+com.example.newprint_erp.app-packaged_res-12 /Users/stella/StudioProjects/newprint_erp/build/path_provider_android/intermediates/packaged_res/debug
+com.example.newprint_erp.app-packaged_res-13 /Users/stella/StudioProjects/newprint_erp/build/shared_preferences_android/intermediates/packaged_res/debug

@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:http/http.dart' as http;
 import 'package:user_repository/user_repository.dart';
 
 part 'user_settings_event.dart';

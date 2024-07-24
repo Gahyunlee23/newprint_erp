@@ -393,9 +393,9 @@
     },
     {
       "name": "shared_preferences_platform_interface",
-      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/shared_preferences_platform_interface-2.3.2",
+      "rootUri": "file:///Users/stella/.pub-cache/hosted/pub.dev/shared_preferences_platform_interface-2.4.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "shared_preferences_web",
@@ -578,7 +578,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-07-18T14:33:55.007779Z",
+  "generated": "2024-07-23T19:36:58.279544Z",
   "generator": "pub",
   "generatorVersion": "3.3.4"
 }

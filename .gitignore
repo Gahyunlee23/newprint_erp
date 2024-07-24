@@ -137,3 +137,8 @@ app.*.symbols
 !/dev/ci/**/Gemfile.lock
 !.vscode/settings.json.DS_Store
 lib/.DS_Store
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build

@@ -31,4 +31,5 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(HomeError(error: error.toString()));
     }
   }
+  //
 }

@@ -22,7 +22,7 @@ class AuthenticationRepository {
   }) async {
     try {
       var response = await _dio.post(
-        '/login/jwt',
+        'https://web.newprint.com/login/jwt',
         data: {'username': username, 'password': password},
         options: Options(headers: {
           'Content-Type': 'application/json',

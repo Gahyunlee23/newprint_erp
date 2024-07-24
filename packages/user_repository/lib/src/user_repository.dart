@@ -1,8 +1,5 @@
-import 'dart:html';
-
 import 'package:dio/dio.dart';
 import 'package:user_repository/src/models/models.dart';
-import 'package:user_repository/src/models/user_profile.dart';
 import 'package:shared_utils/shared_utils.dart';
 
 class UserRepository {
@@ -29,7 +26,7 @@ class UserRepository {
   Future<UserProfile> updateUser(UpdateUserProfile user ) async {
     try {
       final response = await _dio.post(
-          'v1/users',
+          'https://web.newprint.com/v1/users',
           data: UpdateUserProfile(
               name: user.name,
               email: user.email,
